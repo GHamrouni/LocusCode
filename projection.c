@@ -4,13 +4,14 @@
 #include <math.h>
 #include <stdlib.h>
 
+static int initialized = 0;
+
 projection_t*
 init_random_projection(unsigned int dim, unsigned int seed, unsigned int bin_width)
 {
 	normal_generator_t gen = init_normal_distribution(seed);
 	int i;
 	projection_t* proj = malloc(sizeof(projection_t));
-	static int initialized = 0;
 
 	if (!initialized)
 	{
@@ -21,12 +22,35 @@ init_random_projection(unsigned int dim, unsigned int seed, unsigned int bin_wid
 	proj->dimension = dim;
 	proj->vector = malloc(sizeof(double) * dim);
 	proj->bin_width = bin_width;
-	proj->bias = rand() % bin_width;
+	proj->bias = rand() % (bin_width + 1);
 
 	for (i = 0; i < dim; i++)
 		proj->vector[i] = next_gaussian(&gen);
 
 	return proj;
+}
+
+projection_t*
+init_random_projection_rng(unsigned int dim, unsigned int seed, unsigned int bin_width, normal_generator_t* gen)
+{
+	int i;
+	projection_t* proj = malloc(sizeof(projection_t));
+
+	if (!initialized)
+	{
+		srand(seed);
+		initialized = 1;
+	}
+
+	proj->dimension = dim;
+	proj->vector = malloc(sizeof(double) * dim);
+	proj->bin_width = bin_width;
+	proj->bias = rand() % (bin_width + 1);
+
+	for (i = 0; i < dim; i++)
+		proj->vector[i] = next_gaussian(gen);
+
+	return proj;	
 }
 
 int 

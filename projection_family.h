@@ -25,50 +25,31 @@
 */
 
 /************************************************************************/
-/* Generate normal random samples with the Ziggurat method              */
-/* The method is described in Marsaglia and W. W. Tsang in the SIAM     */
-/* Journal of Scientific and Statistical Programming, volume 5, 1984    */
+/*           Locality-Sensitive Hashing by random projections           */
 /************************************************************************/
 
-#ifndef NORMAL_DISTRIBUTION_H
-#define NORMAL_DISTRIBUTION_H
+#ifndef _PROJECTION_FAMILY_H
+#define _PROJECTION_FAMILY_H
 
+#include "projection.h"
 
-/* Represents an RNG for a normal distribution */
-typedef struct normal_generator
+/* Represents a projections-family */
+typedef struct projection_family
 {
-	unsigned long seed;
-} normal_generator_t;
+	unsigned int    projection_nb;
+
+	projection_t**  projections;
+} projection_family_t;
+
+projection_family_t*
+init_random_projections(unsigned int dim, unsigned int seed, unsigned int bin_width, unsigned int projNb);
+
+void
+free_projection_family(projection_family_t* proj_family);
 
 
-/*
- * learn: Initialize a new RNG with the specified initial seed
- *                               
- *
- * Arguments:
- *      initial_seed The initial value of the seed
- *
- * Returns:
- *      Return an initialized RNG.
- *
- */
-normal_generator_t 
-init_normal_distribution(unsigned long initial_seed);
-
-
-/*
- * next_gaussian: Get a new random value from the RNG for a normal distribution
- *                               
- *
- * Arguments:
- *      gen  The random number generator
- *
- * Returns:
- *      A random sampled value.
- * 
- */
-double 
-next_gaussian(normal_generator_t* gen);
+int 
+lsh_data(projection_family_t* proj, double* data);
 
 #endif
 

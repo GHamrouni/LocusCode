@@ -24,9 +24,14 @@
 * SUCH DAMAGE.
 */
 
+/************************************************************************/
+/* Locality-Sensitive Hashing by random projections                     */
+/************************************************************************/
+
 #ifndef _PROJECTION_H
 #define _PROJECTION_H
 
+#include "standard_normal.h"
 
 /* Represents a projection */
 struct projection
@@ -38,15 +43,19 @@ struct projection
 	unsigned int dimension;
 
 	unsigned int bin_width;
-}
+};
 
-typedef projection_t;
+typedef struct projection projection_t;
 
 projection_t*
 init_random_projection(unsigned int dim, unsigned int seed, unsigned int bin_width);
 
+projection_t*
+init_random_projection_rng(unsigned int dim, unsigned int seed, unsigned int bin_width, normal_generator_t* gen);
+
 void
 free_projection(projection_t* proj);
+
 
 int 
 project_data(projection_t* proj, double* data);
