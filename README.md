@@ -3,7 +3,7 @@
 
 A C library for locality-sensitive hashing (LSH).
 
-LocusCode efficiently computes a locality-sensitive hash. The hash can be used for
+LocusCode efficiently computes a locality-sensitive hash. The hash can be used
 to approximate the k-nearest neighbors.
 
 References
