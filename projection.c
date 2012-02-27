@@ -10,7 +10,7 @@ projection_t*
 init_random_projection(unsigned int dim, unsigned int seed, unsigned int bin_width)
 {
 	normal_generator_t gen = init_normal_distribution(seed);
-	int i;
+	unsigned int i;
 	projection_t* proj = malloc(sizeof(projection_t));
 
 	if (!initialized)
@@ -31,9 +31,10 @@ init_random_projection(unsigned int dim, unsigned int seed, unsigned int bin_wid
 }
 
 projection_t*
-init_random_projection_rng(unsigned int dim, unsigned int seed, unsigned int bin_width, normal_generator_t* gen)
+init_random_projection_rng(unsigned int dim, unsigned int seed, 
+                           unsigned int bin_width, normal_generator_t* gen)
 {
-	int i;
+	unsigned int i;
 	projection_t* proj = malloc(sizeof(projection_t));
 
 	if (!initialized)
@@ -56,7 +57,7 @@ init_random_projection_rng(unsigned int dim, unsigned int seed, unsigned int bin
 int 
 project_data(projection_t* proj, double* data)
 {
-	int i;
+	unsigned int i;
 	double dot_product_r = 0;
 
 	for (i = 0; i < proj->dimension; i++)

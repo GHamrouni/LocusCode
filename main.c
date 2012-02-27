@@ -6,7 +6,7 @@
 int main()
 {
 	double data1[10] = {45, 2, 1, 7, 1, 1, 0.5 , 0, 5.6, 47};
-	double data2[10] = {46, 2, 1, 8, 1, 1, 0.5 , 0, 5.6, 45};
+	double data2[10] = {32, 2, 1, 8, 0, 1, 0.5 , 0, 5.6, 45};
 	double data3[10] = {1, 8, 1, -7, 2, 10, 0.5 , 0, 0.6, 7};	
 
 	projection_family_t* pfamily = init_random_projections(10, 542445, 45, 3);

@@ -53,7 +53,7 @@ static double nfix(int hz, int iz, normal_generator_t* gen)
 	      hz = SHR3(gen);
 	      iz = hz&127;
 	 
-	      if(abs(hz)<kn[iz]) 
+	      if(fabs(hz)<kn[iz]) 
 		return (hz*wn[iz]);
 	  }
 }
@@ -75,17 +75,13 @@ normal_generator_t
 init_normal_distribution(unsigned long seed)
 {  
 	const double m1 = 2147483648.0;
-	const double m2 = 4294967296.0;
 
 	double dn = 3.442619855899;
 	double tn = dn;
 	double vn = 9.91256303526217e-3;
 	double q;
 
-	double de = 7.697117470131487;
-	double te = de;
-	double ve = 3.949659822581572e-3;
-
+	
 	normal_generator_t gen = { 123456789 };
 
 	int i;
