@@ -1,4 +1,4 @@
-﻿LocusCode
+﻿LocusCode [![Build Status](https://secure.travis-ci.org/GHamrouni/LocusCode.png)](http://travis-ci.org/GHamrouni/LocusCode)
 =======================
 
 A C library for locality-sensitive hashing (LSH).
