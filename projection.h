@@ -36,13 +36,13 @@
 /* Represents a projection */
 struct projection
 {
-	double*      vector;
-
-	double       bias;
+	unsigned int bias;
 
 	unsigned int dimension;
 
 	unsigned int bin_width;
+
+	double*      vector;
 };
 
 typedef struct projection projection_t;

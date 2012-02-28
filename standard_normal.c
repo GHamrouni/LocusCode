@@ -5,9 +5,9 @@
 #include <math.h>
 #include <limits.h>
 
-static float kn[128];
-static float wn[128];
-static float fn[128];
+static double kn[128];
+static double wn[128];
+static double fn[128];
 
 static int SHR3 (normal_generator_t* gen) 
 {

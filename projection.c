@@ -13,6 +13,9 @@ init_random_projection(unsigned int dim, unsigned int seed, unsigned int bin_wid
 	unsigned int i;
 	projection_t* proj = malloc(sizeof(projection_t));
 
+	if (!proj)
+		return NULL;
+
 	if (!initialized)
 	{
 		srand(seed);
@@ -23,6 +26,9 @@ init_random_projection(unsigned int dim, unsigned int seed, unsigned int bin_wid
 	proj->vector = malloc(sizeof(double) * dim);
 	proj->bin_width = bin_width;
 	proj->bias = rand() % (bin_width + 1);
+
+	if (!proj->vector)
+		return proj;
 
 	for (i = 0; i < dim; i++)
 		proj->vector[i] = next_gaussian(&gen);
@@ -37,6 +43,9 @@ init_random_projection_rng(unsigned int dim, unsigned int seed,
 	unsigned int i;
 	projection_t* proj = malloc(sizeof(projection_t));
 
+	if (!proj)
+		return NULL;
+
 	if (!initialized)
 	{
 		srand(seed);
@@ -47,6 +56,9 @@ init_random_projection_rng(unsigned int dim, unsigned int seed,
 	proj->vector = malloc(sizeof(double) * dim);
 	proj->bin_width = bin_width;
 	proj->bias = rand() % (bin_width + 1);
+
+	if (!proj->vector)
+		return proj;
 
 	for (i = 0; i < dim; i++)
 		proj->vector[i] = next_gaussian(gen);
@@ -63,7 +75,7 @@ project_data(projection_t* proj, double* data)
 	for (i = 0; i < proj->dimension; i++)
 		dot_product_r += proj->vector[i] * data[i];
 
-	return floor((dot_product_r + proj->bias) / (double) proj->bin_width);
+	return (int) floor((dot_product_r + proj->bias) / (double) proj->bin_width);
 }
 
 void

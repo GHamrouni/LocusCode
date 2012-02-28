@@ -9,9 +9,15 @@ init_random_projections(unsigned int dim, unsigned int seed,
 	normal_generator_t gen = init_normal_distribution(seed);
 	unsigned int i;
 
+	if (!pfamily)
+		return NULL;
+
 	pfamily->projections = malloc(projNb * sizeof(projection_t*));
 	pfamily->projection_nb = projNb;
 	
+	if (!pfamily->projections)
+		return pfamily;
+
 	for (i = 0; i < projNb; i++)
 		pfamily->projections[i] = 
                      init_random_projection_rng(dim, seed, bin_width, &gen);
@@ -36,7 +42,7 @@ lsh_data(projection_family_t* pfamily, double* data)
 	int hash = 1;
 
 	for (i = 0; i < pfamily->projection_nb; i++)
-		hash = 101 * hash + project_data(pfamily->projections[i], data);
+		hash = 33 * hash + project_data(pfamily->projections[i], data);
 
 	return hash;
 }
