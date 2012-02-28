@@ -32,11 +32,12 @@
 #define _PROJECTION_FAMILY_H
 
 #include "projection.h"
+#include <stddef.h>
 
 /* Represents a projections-family */
 typedef struct projection_family
 {
-	unsigned int    projection_nb;
+	size_t          projection_nb;
 
 	projection_t**  projections;
 } projection_family_t;

@@ -3,11 +3,11 @@
 
 projection_family_t*
 init_random_projections(unsigned int dim, unsigned int seed, 
-                        unsigned int bin_width, unsigned int projNb)
+                        unsigned int bin_width, size_t projNb)
 {
 	projection_family_t* pfamily = malloc(sizeof(projection_family_t));
 	normal_generator_t gen = init_normal_distribution(seed);
-	unsigned int i;
+	size_t i;
 
 	if (!pfamily)
 		return NULL;
@@ -28,7 +28,7 @@ init_random_projections(unsigned int dim, unsigned int seed,
 void
 free_projection_family(projection_family_t* pfamily)
 {
-	unsigned int i;
+	size_t i;
 	for (i = 0; i < pfamily->projection_nb; i++)
 		free(pfamily->projections[i]);
 
@@ -38,7 +38,7 @@ free_projection_family(projection_family_t* pfamily)
 int 
 lsh_data(projection_family_t* pfamily, double* data)
 {
- 	unsigned int i;
+ 	size_t i;
 	int hash = 1;
 
 	for (i = 0; i < pfamily->projection_nb; i++)

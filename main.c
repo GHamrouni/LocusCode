@@ -17,6 +17,7 @@ int main(void)
 	int bin_width = 45;
 	int proj_family_size = 3;
 
+	/* Initialize a family (size = proj_family_size) */
 	projection_family_t* pfamily = 
 		init_random_projections(dimension, seed, bin_width, proj_family_size);
 

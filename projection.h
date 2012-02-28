@@ -32,15 +32,16 @@
 #define _PROJECTION_H
 
 #include "standard_normal.h"
+#include <stddef.h>
 
 /* Represents a projection */
 struct projection
 {
 	unsigned int bias;
 
-	unsigned int dimension;
-
 	unsigned int bin_width;
+
+	size_t       dimension;
 
 	double*      vector;
 };
