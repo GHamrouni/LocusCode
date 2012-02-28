@@ -13,7 +13,7 @@ int main(void)
 	double data3[10] = {1, 8, 1, -7, 2, 10, 0.5 , 0, 0.6, 7};	
 
 	int dimension = 10;
-	int seed = 542445;
+	int seed = 756;
 	int bin_width = 45;
 	int proj_family_size = 3;
 

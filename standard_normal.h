@@ -57,7 +57,8 @@ init_normal_distribution(unsigned long initial_seed);
 
 
 /*
- * next_gaussian: Get a new random value from the RNG for a normal distribution
+ * next_gaussian: Get a new random value from the RNG for a normal 
+ * distribution
  *                               
  *
  * Arguments:
