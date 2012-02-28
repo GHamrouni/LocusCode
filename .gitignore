@@ -1,0 +1,16 @@
+*.swp
+*.o
+*.lo
+*.la
+*.a
+*.exe
+*.lib
+*.obj
+*.pdb
+*.idb
+*.opensdf
+*.orig
+*.sdf
+*.suo
+*.user
+ipch
