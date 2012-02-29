@@ -25,11 +25,10 @@ lsh_row(projection_family_t* pfamily, sparse_matrix_t* matrix, size_t row_i)
 
 		if (r1 >= 0)
 			for (i = r1; i < r2; i++)
-				if (matrix->column_index[i] != -1)
-				{
-					int cindex = matrix->column_index[i];
-					dot_product_r += pfamily->projections[k]->vector[cindex] * matrix->values[i];
-				}
+			{
+				int cindex = matrix->column_index[i];
+				dot_product_r += pfamily->projections[k]->vector[cindex] * matrix->values[i];
+			}
 
 		bwidth = pfamily->projections[k]->bin_width;
 		bias = pfamily->projections[k]->bias;
