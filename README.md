@@ -1,7 +1,7 @@
 ﻿LocusCode [![Build Status](https://secure.travis-ci.org/GHamrouni/LocusCode.png)](http://travis-ci.org/GHamrouni/LocusCode)
 =======================
 
-A C library for locality-sensitive hashing (LSH).
+LocusCode allows you to perform similarity search on web scale datasets.
 
 LocusCode efficiently computes a locality-sensitive hash. The hash can be used
 to approximate the k-nearest neighbors.
