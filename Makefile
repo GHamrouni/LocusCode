@@ -2,7 +2,7 @@ CC=gcc
 CFLAGS=-c -Wall -Wextra -pedantic -Werror
 LDFLAGS=
 LIBS=-lm
-SOURCES=projection.c projection_family.c standard_normal.c
+SOURCES=projection.c projection_family.c standard_normal.c sparse_matrix_hash.c sparse_matrix.c
 OBJECTS=$(SOURCES:.c=.o)
 EXECUTABLE=test
 OUT = libLocusCode.a
